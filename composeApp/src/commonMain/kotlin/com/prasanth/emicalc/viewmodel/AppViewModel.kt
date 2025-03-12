@@ -79,11 +79,9 @@ class AppViewModel(emiCalculationRepository: EMICalculationRepository = EMICalcu
      private fun formatNumber(value:String): String{
         if (value.contains(".")) return value
         val pca = value.reversed().toMutableList().map { it.toString() }.toMutableList()
-        var slidingWindowSize = 3
         var index = 1
         while(index <= pca.size)
         {
-            if (pca.size < slidingWindowSize) break
             if (index%2 != 0 && index!=pca.size && index!=1) {
                 pca[index-1] = ","+pca[index-1]
             }
