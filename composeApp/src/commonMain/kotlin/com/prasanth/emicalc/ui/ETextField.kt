@@ -10,9 +10,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun ETextField(
@@ -20,7 +22,8 @@ fun ETextField(
     principleState: State<String>,
     updatePrinciple: (value: String) -> Unit,
     keyboardType: KeyboardType = KeyboardType.Text,
-    hint:String = ""
+    hint:String = "",
+    textAlign: TextAlign = TextAlign.Start
 ) {
     val principle:String by remember { principleState }
     val textFieldValue = TextFieldValue(text = principle, selection = TextRange(principle.length))
@@ -34,6 +37,6 @@ fun ETextField(
             imeAction = ImeAction.Done,
             keyboardType = keyboardType,
         ),
-        keyboardActions = KeyboardActions(onDone = {})
+        textStyle = TextStyle(textAlign = textAlign)
     )
 }
