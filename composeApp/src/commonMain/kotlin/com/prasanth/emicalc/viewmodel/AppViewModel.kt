@@ -51,14 +51,21 @@ class AppViewModel(emiCalculationRepository: EMICalculationRepository = EMICalcu
         val interestAmnt = interest.value.toDouble() / 12 / 100
         emiCalculationRepository.calculateAmortization(principleAmnt,interestAmnt,emi.value.toDouble())
     }
+    private fun String.isDigits():Boolean{
+        return toDoubleOrNull() != null || isNullOrEmpty()
+    }
 
     fun setPrinciple(value:String){
-        _principle.value = formatNumber(value.replace(",",""))
+        val principle = value.replace(",","")
+        if (principle.isDigits().not()) return
+        _principle.value = formatNumber(principle)
     }
     fun setInterest(value: String){
+        if (value.isDigits().not()) return
         _interest.value = value
     }
     fun setYears(value: String){
+        if (value.isDigits().not()) return
         _years.value = value
     }
     fun setIsMonth(value:Boolean){
@@ -70,6 +77,7 @@ class AppViewModel(emiCalculationRepository: EMICalculationRepository = EMICalcu
     }
 
      private fun formatNumber(value:String): String{
+        if (value.contains(".")) return value
         val pca = value.reversed().toMutableList().map { it.toString() }.toMutableList()
         var slidingWindowSize = 3
         var index = 1
