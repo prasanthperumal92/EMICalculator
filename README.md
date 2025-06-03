@@ -5,6 +5,12 @@ It uses the formula
 locally and provides you with an instant result .  This project also shows the amortization schedule for you to check how much interest is 
 levied in which month.
 
+### Screenshots
+#### Desktop:
+<img src="https://github.com/user-attachments/assets/9b2f97de-c55c-45dc-b0c1-9e3e195448f1" width=600 height=500 /> <br>
+#### Android:
+<img src="https://github.com/user-attachments/assets/62a29a8f-220d-4306-ac23-7f56a98157fe" width=200 height=400 />
+
 
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
 
